@@ -9,12 +9,11 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        // User khusus dengan Username & Email yang gampang
         User::factory()->create([
-            'name'     => 'Admin Rifki',
+            'name' => 'Admin Rifki',
             'username' => 'admin',
-            'email'    => 'admin@gmail.com',
-            'password' => bcrypt('admin123'),
+            'email' => 'admin@gmail.com',
+            'password' => 'admin123', // jangan bcrypt() lagi
         ]);
 
         User::factory()->count(5)->create();

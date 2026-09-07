@@ -31,17 +31,17 @@ class ProdukFactory extends Factory
         )->id;
 
         return [
-            'user_id'      => $userId,
-            'category_id'  => $categoryId,
-            'foto'         => 'produk/' . $this->faker->uuid . '.jpg',
-            'nama'         => $this->faker->words(3, true),
-            'harga_beli'   => $hargaBeli,
-            'harga_jual'   => $hargaBeli + $this->faker->numberBetween(5_000, 100_000),
-            'stok'         => $this->faker->numberBetween(1, 500),
-            'satuan'       => 'pcs',
+            'user_id' => $userId,
+            'category' => $categoryId,
+            'foto' => 'produk/' . $this->faker->uuid . '.jpg',
+            'nama' => $this->faker->words(3, true),
+            'harga_beli' => $hargaBeli,
+            'harga_jual' => $hargaBeli + $this->faker->numberBetween(5_000, 100_000),
+            'stok' => $this->faker->numberBetween(1, 500),
+            'satuan' => 'pcs',
             'minimum_stok' => 10,
-            'deskripsi'    => $this->faker->sentence(),
-            'status'       => 1,
+            'deskripsi' => $this->faker->sentence(),
+            'status' => 1,
         ];
     }
 }
