@@ -333,42 +333,53 @@
                         {{-- BUTTON SUBMIT --}}
                         <button type="submit" class="btn btn-signin mb-2">Masuk SEKARANG</button>
                     </form>
-
-                    <div class="divider">Atau</div>
-
-                    <button type="button" class="btn btn-other">Masuk dengan Metode Lain</button>
-
-                    <div class="signup-text">
-                        Belum memiliki akun? <a href="{{ route('register.page') }}">Daftar Sekarang</a>
-                    </div>
                 </div>
 
             </div>
         </div>
     </div>
 
-    {{-- MODAL LUPA PASSWORD --}}
+    {{-- MODAL LUPA PASSWORD (FORM UPDATE DIRECT KE MYSQL) --}}
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-4 border-0 shadow">
                 <div class="modal-header border-0 pb-0">
                     <h5 class="modal-title fw-bold text-dark">
-                        <i class="bi bi-shield-lock text-primary me-2"></i>Lupa Kata Sandi?
+                        <i class="bi bi-key-fill text-primary me-2"></i>Reset Kata Sandi
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-secondary small py-3">
-                    <p class="mb-3">Untuk alasan keamanan, silakan hubungi <strong>Administrator Utama</strong> untuk
-                        mereset kata sandi Anda.</p>
-                    <div class="p-3 bg-light rounded-3 border">
-                        <div class="fw-bold text-dark">Kontak Admin:</div>
-                        <div class="text-muted">Email: admin@areacode.com</div>
+
+                <form action="{{ route('password.reset.direct') }}" method="POST">
+                    @csrf
+                    <div class="modal-body py-3">
+                        <p class="text-secondary small mb-3">Masukkan email terdaftar dan buat kata sandi baru Anda.</p>
+
+                        <div class="input-box mb-3">
+                            <i class="bi bi-envelope input-icon"></i>
+                            <input type="email" name="email" class="form-control" placeholder="Alamat Email Terdaftar"
+                                required>
+                        </div>
+
+                        <div class="input-box mb-3">
+                            <i class="bi bi-lock input-icon"></i>
+                            <input type="password" name="password" class="form-control" placeholder="Kata Sandi Baru"
+                                required>
+                        </div>
+
+                        <div class="input-box mb-1">
+                            <i class="bi bi-check2-circle input-icon"></i>
+                            <input type="password" name="password_confirmation" class="form-control"
+                                placeholder="Konfirmasi Kata Sandi Baru" required>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer border-0 pt-0">
-                    <button type="button" class="btn btn-primary rounded-3 px-4 btn-sm"
-                        data-bs-dismiss="modal">Tutup</button>
-                </div>
+
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-light rounded-3 btn-sm" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary rounded-3 px-4 btn-sm fw-bold">Simpan Sandi
+                            Baru</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
